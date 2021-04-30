@@ -41,8 +41,8 @@
         window.onCustomizeMenuActions = (s, e) => {
             e.Actions.push({
                 text: 'Email',
-                imageClassName: 'custom-button',
-                disabled: s.dx.ko.observable(false),
+                imageClassName: 'custom-image',
+                disabled: ko.observable(false),
                 visible: true,
                 hasSeparator: true,
                 clickAction: function (report) {
