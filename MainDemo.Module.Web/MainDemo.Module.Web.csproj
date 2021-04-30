@@ -155,6 +155,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="DevExpress.XtraReports.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v20.2.Web, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraReports.v20.2.Web.WebForms, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="System">
       <Private>False</Private>
@@ -183,6 +184,7 @@
     <Compile Include="Controllers\LogonParametersViewController.cs" />
     <Compile Include="Controllers\UseSQLAlternativeInfoController.cs" />
     <Compile Include="Controllers\WebDateEditCalendarController.cs" />
+    <Compile Include="CustomDocumentOperationService.cs" />
     <Compile Include="CustomizeReportViewerController.cs" />
     <Compile Include="MainDemoWebModule.cs">
       <SubType>Component</SubType>

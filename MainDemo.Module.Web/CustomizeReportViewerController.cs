@@ -11,22 +11,11 @@ using System.Threading.Tasks;
 
 namespace MainDemo.Module.Web
 {
-    public class CustomizeReportViewerController : ViewController<DetailView>, IXafCallbackHandler
+    public class CustomizeReportViewerController : ViewController<DetailView>
     {
         public CustomizeReportViewerController()
         {
             TargetViewId = ReportsAspNetModuleV2.ReportViewDetailViewWebName;
-        }
-
-        public void ProcessAction(string parameter)
-        {
-            var item = View.GetItems<ReportWebViewerDetailItem>()[0];
-            if (item != null)
-            {
-                var currentReport = (XtraReport)item.GetType().GetField("report", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).GetValue(item);
-                string reportPath = @"c:\\Temp\Test.pdf";
-                currentReport.ExportToPdf(reportPath);
-            }
         }
 
         protected override void OnActivated()
@@ -45,16 +34,7 @@ namespace MainDemo.Module.Web
         public void CustomizeReportViewerViewItem(ReportWebViewerDetailItem reportWebViewerDetailItem)
         {
             var item = reportWebViewerDetailItem;
-            XafCallbackManager callbackManager = ((ICallbackManagerHolder)WebWindow.CurrentRequestPage).CallbackManager;
-            callbackManager.RegisterHandler("CustomizeReportViewerController", this);
-            item.ReportViewer.ClientSideEvents.CustomizeMenuActions = @"function(s,e) {
-                e.Actions.push({  
-                    text: 'Email',  
-                    imageClassName: 'custom-image',  
-                    disabled: ko.observable(false),  
-                    visible: true,
-                    hasSeparator: true,
-                    clickAction: function() { " + callbackManager.GetScript("CustomizeReportViewerController", "") + "}});}";
+            item.ReportViewer.ClientSideEvents.CustomizeMenuActions = "onCustomizeMenuActions";
         }
     }
 }

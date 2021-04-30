@@ -37,6 +37,22 @@
                 color: #4a4a4a;
             }
     </style>
+    <script>
+        window.onCustomizeMenuActions = (s, e) => {
+            e.Actions.push({
+                text: 'Email',
+                imageClassName: 'custom-button',
+                disabled: s.dx.ko.observable(false),
+                visible: true,
+                hasSeparator: true,
+                clickAction: function (report) {
+                    s.PerformCustomDocumentOperation();
+                },
+                hotKey: { ctrlKey: true, keyCode: 'Z'.charCodeAt(0) },
+                container: 'toolbar'
+            })
+        }
+    </script>
 </head>
 <body class="VerticalTemplate">
     <form id="form2" runat="server">

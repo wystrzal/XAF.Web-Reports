@@ -15,8 +15,10 @@ using DevExpress.Internal;
 using DevExpress.Persistent.AuditTrail;
 using DevExpress.Persistent.Base;
 using DevExpress.Web;
+using DevExpress.XtraReports.Web.WebDocumentViewer;
 using MainDemo.Module;
 using MainDemo.Module.BusinessObjects;
+using MainDemo.Module.Web;
 
 namespace MainDemo.Web {
     public class Global : System.Web.HttpApplication {
@@ -28,6 +30,7 @@ namespace MainDemo.Web {
         }
         protected void Application_Start(object sender, EventArgs e) {
             DevExpress.ExpressApp.FrameworkSettings.DefaultSettingsCompatibilityMode = DevExpress.ExpressApp.FrameworkSettingsCompatibilityMode.Latest;
+            DefaultWebDocumentViewerContainer.Register<DocumentOperationService, CustomDocumentOperationService>();
             AboutInfo.Instance.Copyright = AssemblyInfo.AssemblyCopyright + " All Rights Reserved";
             RouteTable.Routes.RegisterXafRoutes();
             ASPxWebControl.CallbackError += new EventHandler(Application_Error);
