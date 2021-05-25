@@ -38,7 +38,7 @@
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <LangVersion>6</LangVersion>
+    <LangVersion>7.0</LangVersion>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -47,7 +47,7 @@
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
-    <LangVersion>6</LangVersion>
+    <LangVersion>7.0</LangVersion>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -55,7 +55,7 @@
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>TRACE;DEBUG;EASYTEST</DefineConstants>
-    <LangVersion>6</LangVersion>
+    <LangVersion>7.0</LangVersion>
     <DebugType>full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
@@ -133,6 +133,12 @@
     <Reference Include="DevExpress.ExpressApp.Maps.Web.v20.2">
       <Private>False</Private>
     </Reference>
+    <Reference Include="DevExpress.Office.v20.2.Core">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v20.2.Core">
+      <Private>False</Private>
+    </Reference>
     <Reference Include="DevExpress.Web.v20.2">
       <Private>False</Private>
     </Reference>
@@ -154,9 +160,9 @@
     <Reference Include="DevExpress.XtraPivotGrid.v20.2">
       <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraReports.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraReports.v20.2.Web, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraReports.v20.2.Web.WebForms, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v20.2, Version=20.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v20.2.Web, Version=20.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v20.2.Web.WebForms, Version=20.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
@@ -186,6 +192,7 @@
     <Compile Include="Controllers\WebDateEditCalendarController.cs" />
     <Compile Include="CustomDocumentOperationService.cs" />
     <Compile Include="CustomizeReportViewerController.cs" />
+    <Compile Include="EmailService.cs" />
     <Compile Include="MainDemoWebModule.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -202,6 +209,10 @@
     </Compile>
     <Compile Include="Controllers\WebTooltipController.Designer.cs">
       <DependentUpon>WebTooltipController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportStorage.cs" />
+    <Compile Include="ShowReportController.cs">
+      <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{70AC2425-F2E8-480A-825C-9E42C8F071E6}</ProjectGuid>
+    <ProjectGuid>{A01A5BF2-32F9-4526-96A8-C6D4981AABB7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MainDemo.Module.Win</RootNamespace>
-    <AssemblyName>MainDemo.Module.Win</AssemblyName>
+    <RootNamespace>MainDemo.Module.Web</RootNamespace>
+    <AssemblyName>MainDemo.Module.Web</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -61,49 +61,61 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Data.v20.2">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="DevExpress.ExpressApp.FileAttachment.Win.v20.2">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="DevExpress.ExpressApp.Office.Win.v20.2">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="DevExpress.ExpressApp.PivotChart.v20.2">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="DevExpress.ExpressApp.PivotChart.Win.v20.2">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="DevExpress.ExpressApp.ReportsV2.v20.2">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="DevExpress.ExpressApp.ReportsV2.Win.v20.2">
+    <Reference Include="DevExpress.ExpressApp.Office.Web.v20.2">
       <Private>False</Private>
     </Reference>
     <Reference Include="DevExpress.ExpressApp.Scheduler.v20.2">
       <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.ExpressApp.Scheduler.Win.v20.2">
+    <Reference Include="DevExpress.ExpressApp.Validation.Web.v20.2">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.ExpressApp.Xpo.v20.2">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v20.2.Core">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Data.v20.2">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.ExpressApp.AuditTrail.v20.2">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.ExpressApp.PivotChart.v20.2">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.ExpressApp.PivotChart.Web.v20.2">
       <Private>False</Private>
     </Reference>
     <Reference Include="DevExpress.ExpressApp.v20.2">
       <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.ExpressApp.Validation.Win.v20.2">
+    <Reference Include="DevExpress.ExpressApp.FileAttachment.Web.v20.2">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.ExpressApp.Images.v20.2">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.ExpressApp.Objects.v20.2">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.ExpressApp.ReportsV2.v20.2">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.ExpressApp.ReportsV2.Web.v20.2">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.ExpressApp.Scheduler.Web.v20.2">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.ExpressApp.Security.v20.2">
       <Private>False</Private>
     </Reference>
     <Reference Include="DevExpress.ExpressApp.Validation.v20.2">
       <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.ExpressApp.ViewVariantsModule.v20.2">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="DevExpress.ExpressApp.Win.v20.2">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="DevExpress.ExpressApp.Xpo.v20.2">
+    <Reference Include="DevExpress.ExpressApp.Web.v20.2">
       <Private>False</Private>
     </Reference>
     <Reference Include="DevExpress.Persistent.Base.v20.2">
@@ -112,56 +124,40 @@
     <Reference Include="DevExpress.Persistent.BaseImpl.v20.2">
       <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.Printing.v20.2.Core">
+    <Reference Include="DevExpress.Web.ASPxHtmlEditor.v20.2">
       <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.Office.v20.2.Core">
+    <Reference Include="DevExpress.Web.ASPxPivotGrid.v20.2">
       <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.RichEdit.v20.2.Core">
+    <Reference Include="DevExpress.ExpressApp.Maps.Web.v20.2">
       <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.Tutorials.v20.2">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="DevExpress.Utils.v20.2">
+    <Reference Include="DevExpress.Web.v20.2">
       <Private>False</Private>
     </Reference>
     <Reference Include="DevExpress.Xpo.v20.2">
       <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraBars.v20.2">
+    <Reference Include="DevExpress.PivotGrid.v20.2.Core">
       <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraGrid.v20.2">
+    <Reference Include="DevExpress.XtraPrinting.v20.2">
       <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraEditors.v20.2">
+    <Reference Include="DevExpress.Charts.v20.2.Core">
       <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraLayout.v20.2">
+    <Reference Include="DevExpress.XtraCharts.v20.2">
       <Private>False</Private>
     </Reference>
     <Reference Include="DevExpress.XtraPivotGrid.v20.2">
       <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.PivotGrid.v20.2.Core">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="DevExpress.XtraRichEdit.v20.2">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="DevExpress.XtraScheduler.v20.2.Core">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="DevExpress.XtraScheduler.v20.2">
-      <Private>False</Private>
-    </Reference>
+    <Reference Include="DevExpress.XtraReports.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v20.2.Web, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v20.2.Web.WebForms, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="System">
-      <Name>System</Name>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Configuration">
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Core">
@@ -169,70 +165,44 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Data">
-      <Name>System.Data</Name>
       <Private>False</Private>
     </Reference>
-    <Reference Include="System.Drawing">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Windows.Forms">
+    <Reference Include="System.Web">
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Xml">
-      <Name>System.XML</Name>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\AdjustRibbonController.cs">
+    <Compile Include="Controllers\ChooseTemplateController.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controllers\DetailViewLayoutCustomizationController.cs" />
-    <Compile Include="Controllers\RichNotesListViewController.cs" />
-    <Compile Include="Controllers\UpdateActionsOnAsyncLoadingController.cs">
-      <SubType>Component</SubType>
+    <Compile Include="Controllers\ChooseTemplateController.Designer.cs">
+      <DependentUpon>ChooseTemplateController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\LogonParametersViewController.cs" />
     <Compile Include="Controllers\UseSQLAlternativeInfoController.cs" />
-    <Compile Include="Controllers\WinTooltipController.cs">
+    <Compile Include="Controllers\WebDateEditCalendarController.cs" />
+    <Compile Include="CustomDocumentOperationService.cs" />
+    <Compile Include="CustomizeReportViewerController.cs" />
+    <Compile Include="MainDemoWebModule.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controllers\WinTooltipController.Designer.cs">
-      <DependentUpon>WinTooltipController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\WinDateEditCalendarController.cs" />
-    <Compile Include="Controllers\DemoAboutInfoController.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="XAFFeedbackHelper.cs" />
-    <Compile Include="MainDemoWinModule.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="MainDemoWinModule.Designer.cs">
-      <DependentUpon>MainDemoWinModule.cs</DependentUpon>
+    <Compile Include="MainDemoWebModule.Designer.cs">
+      <DependentUpon>MainDemoWebModule.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DatabaseUpdate\Updater.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Controllers\WinTooltipController.resx">
-      <DependentUpon>WinTooltipController.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controllers\WinDateEditCalendarController.resx">
-      <DependentUpon>WinDateEditCalendarController.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MainDemoWinModule.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>MainDemoWinModule.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Model.DesignedDiffs.xafml">
-    </EmbeddedResource>
-    <EmbeddedResource Include="Model.DesignedDiffs.Localization.de.xafml">
-      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
-      <Subtype>Designer</Subtype>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\licenses.licx" />
+    <Compile Include="Controllers\WebPermissionsController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\WebTooltipController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\WebTooltipController.Designer.cs">
+      <DependentUpon>WebTooltipController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MainDemo.Module\MainDemo.Module.csproj">
@@ -240,6 +210,31 @@
       <Name>MainDemo.Module</Name>
       <Private>True</Private>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controllers\ChooseTemplateController.resx">
+      <DependentUpon>ChooseTemplateController.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\WebDateEditCalendarController.resx">
+      <DependentUpon>WebDateEditCalendarController.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainDemoWebModule.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>MainDemoWebModule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Model.DesignedDiffs.xafml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Model.DesignedDiffs.Localization.de.xafml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+      <Subtype>Designer</Subtype>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\WebTooltipController.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WebTooltipController.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Controllers\ReadMe.txt" />

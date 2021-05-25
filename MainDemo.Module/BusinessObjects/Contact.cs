@@ -9,7 +9,8 @@ using DevExpress.Xpo;
 
 namespace MainDemo.Module.BusinessObjects {
     [DefaultClassOptions]
-    public class Contact : Person, IMapsMarker {
+    [FileAttachment(nameof(DokumentPdf))]
+    public class Contact : Person, IMapsMarker, IDokumentPdf {
         private string webPageAddress;
         private Contact manager;
         private string nickName;
@@ -148,6 +149,14 @@ namespace MainDemo.Module.BusinessObjects {
         public double Longitude {
             get { return Convert.ToDouble(EvaluateAlias(nameof(Longitude))); }
         }
+
+        FileData dokumentPdf;
+        public FileData DokumentPdf
+        {
+            get => dokumentPdf;
+            set => SetPropertyValue(nameof(DokumentPdf), ref dokumentPdf, value);
+        }
+
 
         public override void AfterConstruction() {
             base.AfterConstruction();

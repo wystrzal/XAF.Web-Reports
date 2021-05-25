@@ -33,8 +33,17 @@ namespace MainDemo.Module.Web
 
         public void CustomizeReportViewerViewItem(ReportWebViewerDetailItem reportWebViewerDetailItem)
         {
+            ReportStorage.GetInstance(SecuritySystem.CurrentUserName).Application = Application;
             var item = reportWebViewerDetailItem;
             item.ReportViewer.ClientSideEvents.CustomizeMenuActions = "onCustomizeMenuActions";
+            item.ReportViewer.ClientSideEvents.CustomizeMenuActions = @"function(s,e) {
+                e.Actions.push({  
+                    text: 'Wyślij dokument',  
+                    imageClassName: 'custom-image',  
+                    disabled: ko.observable(false),  
+                    visible: true,
+                    hasSeparator: true,
+                    clickAction: function() { s.PerformCustomDocumentOperation('" + SecuritySystem.CurrentUserName + "'); }});}";
         }
     }
 }

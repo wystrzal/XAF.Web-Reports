@@ -4,7 +4,6 @@
     <Actions>
       <Action Id="ClearTasksAction" SelectionDependencyType="RequireSingleObject" ConfirmationMessage="Are you sure you want to clear the Tasks list?" ToolTip="Clear the current Contact's Tasks list" Shortcut="Control+Shift+C" />
       <Action Id="SaveAndClose" ValidationContexts="SaveAndClose" />
-      <Action Id="Task.MarkCompleted" ValidationContexts="MarkCompleted" Caption="Mark Completed" />
       <Action Id="SetTaskAction">
         <ChoiceActionItems>
           <ChoiceActionItem Id="Status">
@@ -16,6 +15,7 @@
           </ChoiceActionItem>
         </ChoiceActionItems>
       </Action>
+      <Action Id="Task.MarkCompleted" ValidationContexts="MarkCompleted" Caption="Mark Completed" />
     </Actions>
     <ActionToContainerMapping>
       <ActionContainer Id="RecordEdit">
@@ -27,11 +27,6 @@
     </ActionToContainerMapping>
   </ActionDesign>
   <BOModel>
-    <Class Name="DevExpress.Persistent.BaseImpl.PhoneNumber">
-      <OwnMembers>
-        <Member Name="Number" EditMask="(000) 000-0000" DisplayFormat="{0:(###) ###-####}" />
-      </OwnMembers>
-    </Class>
     <Class Name="DevExpress.ExpressApp.Security.AuthenticationStandardLogonParameters" DefaultDetailView="AuthenticationStandardLogonParameters_DetailView_Demo" />
     <Class Name="DevExpress.Persistent.BaseImpl.Analysis" Caption="Analytics" />
     <Class Name="DevExpress.Persistent.BaseImpl.Note" ObjectCaptionFormat="" />
@@ -43,6 +38,11 @@
     <Class Name="DevExpress.Persistent.BaseImpl.Person">
       <OwnMembers>
         <Member Name="Birthday" Caption="Birth Date" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.Persistent.BaseImpl.PhoneNumber">
+      <OwnMembers>
+        <Member Name="Number" EditMask="(000) 000-0000" DisplayFormat="{0:(###) ###-####}" />
       </OwnMembers>
     </Class>
     <Class Name="DevExpress.Persistent.BaseImpl.Task" Caption="Base Task" />
@@ -64,10 +64,10 @@
       <OwnMembers>
         <Member Name="GrossPay" DisplayFormat="${0:0.00}" />
         <Member Name="NetPay" DisplayFormat="${0:0.00}" />
-        <Member Name="TaxRate" DisplayFormat="{0:P}" />
-        <Member Name="PayRate" DisplayFormat="${0:0.00}" />
-        <Member Name="TotalTax" DisplayFormat="${0:0.00}" />
         <Member Name="OvertimePayRate" DisplayFormat="${0:0.00}" />
+        <Member Name="PayRate" DisplayFormat="${0:0.00}" />
+        <Member Name="TaxRate" DisplayFormat="{0:P}" />
+        <Member Name="TotalTax" DisplayFormat="${0:0.00}" />
       </OwnMembers>
     </Class>
     <Class Name="MainDemo.Module.BusinessObjects.Position" ImageName="BO_Position" />
@@ -102,27 +102,24 @@
     <LayoutManagerOptions RequiredFieldMark="*" />
   </Options>
   <SchemaModules IsNewNode="True">
-    <SchemaModule Name="SystemModule" Version="20.1.0.0" IsNewNode="True" />
-    <SchemaModule Name="ValidationModule" Version="20.1.0.0" IsNewNode="True" />
-    <SchemaModule Name="ViewVariantsModule" Version="20.1.0.0" IsNewNode="True" />
+    <SchemaModule Name="SystemModule" Version="20.2.7.0" IsNewNode="True" />
+    <SchemaModule Name="ValidationModule" Version="20.2.7.0" IsNewNode="True" />
+    <SchemaModule Name="ViewVariantsModule" Version="20.2.7.0" IsNewNode="True" />
   </SchemaModules>
   <Validation>
     <Rules>
-      <!--Contact-->
+      <RuleRequiredField Id="Calendar_SubjectIsNotEmpty" TargetType="DevExpress.Persistent.BaseImpl.Event" TargetPropertyName="Subject" TargetContextIDs="Save" IsNewNode="True" />
       <RuleRequiredField Id="Contact_EmailIsNotEmpty" TargetType="MainDemo.Module.BusinessObjects.Contact" TargetPropertyName="Email" TargetContextIDs="Save" IsNewNode="True" />
       <RuleRequiredField Id="Contact_FirstNameIsNotEmpty" TargetType="MainDemo.Module.BusinessObjects.Contact" TargetPropertyName="FirstName" TargetContextIDs="Save" IsNewNode="True" />
-      <RuleRequiredField Id="Contact_LastNameIsNotEmpty" TargetType="MainDemo.Module.BusinessObjects.Contact" TargetPropertyName="LastName" TargetContextIDs="Save" IsNewNode="True" />
       <RuleRange Id="Contact_InvalidBirthday" TargetType="MainDemo.Module.BusinessObjects.Contact" TargetContextIDs="Save" TargetPropertyName="Birthday" MaximumValueExpression="Today()" MinimumValueExpression="#1900-01-01 00:00:00.00000#" CustomMessageTemplate="&quot;Birth Date&quot; must be between 1/1/1900 and today." IsNewNode="True" />
-      <RuleRange Id="Contact_InvalidWeddingDate" TargetType="MainDemo.Module.BusinessObjects.Contact" TargetContextIDs="Save" TargetPropertyName="Anniversary" MaximumValueExpression="Today()" MinimumValueExpression="#1900-01-01 00:00:00.00000#" CustomMessageTemplate="&quot;Wedding Date&quot; must be between 1/1/1900 and today." IsNewNode="True" />
       <RuleRegularExpression Id="Contact_InvalidEmail" Pattern="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$" TargetContextIDs="Save" TargetPropertyName="Email" TargetType="MainDemo.Module.BusinessObjects.Contact" CustomMessageTemplate="Invalid &quot;Email&quot;." IsNewNode="True" />
+      <RuleRange Id="Contact_InvalidWeddingDate" TargetType="MainDemo.Module.BusinessObjects.Contact" TargetContextIDs="Save" TargetPropertyName="Anniversary" MaximumValueExpression="Today()" MinimumValueExpression="#1900-01-01 00:00:00.00000#" CustomMessageTemplate="&quot;Wedding Date&quot; must be between 1/1/1900 and today." IsNewNode="True" />
+      <RuleRequiredField Id="Contact_LastNameIsNotEmpty" TargetType="MainDemo.Module.BusinessObjects.Contact" TargetPropertyName="LastName" TargetContextIDs="Save" IsNewNode="True" />
       <RuleRegularExpression Id="Contact_PhoneNumber" Pattern="^\([0-9]{3}\)\s?[0-9]{3}-[0-9]{4}$" TargetContextIDs="Save" TargetPropertyName="Number" TargetType="DevExpress.Persistent.BaseImpl.PhoneNumber" CustomMessageTemplate="&quot;Number&quot; must be in the following format: &quot;(000) 000-0000&quot;." IsNewNode="True" />
       <RuleRequiredField Id="Contact_PhoneNumberIsNotEmpty" TargetType="DevExpress.Persistent.BaseImpl.PhoneNumber" TargetPropertyName="Number" TargetContextIDs="Save" IsNewNode="True" />
-      <!--Task-->
       <RuleRange Id="Task_PercentCompleted" TargetType="MainDemo.Module.BusinessObjects.DemoTask" TargetContextIDs="Save" TargetPropertyName="PercentCompleted" MinimumValue="0" MaximumValue="100" IsNewNode="True" />
-      <RuleRequiredField Id="TaskSubjectIsNotEmpty" TargetType="DevExpress.Persistent.BaseImpl.Task" TargetPropertyName="Subject" TargetContextIDs="Save" IsNewNode="True" />
       <RuleValueComparison Id="Task_StartDate_DueDate" TargetPropertyName="DueDate" RightOperandExpression="StartDate" OperatorType="GreaterThanOrEqual" TargetType="MainDemo.Module.BusinessObjects.DemoTask" TargetContextIDs="Save" IsNewNode="True" />
-      <!--Calendar-->
-      <RuleRequiredField Id="Calendar_SubjectIsNotEmpty" TargetType="DevExpress.Persistent.BaseImpl.Event" TargetPropertyName="Subject" TargetContextIDs="Save" IsNewNode="True" />
+      <RuleRequiredField Id="TaskSubjectIsNotEmpty" TargetType="DevExpress.Persistent.BaseImpl.Task" TargetPropertyName="Subject" TargetContextIDs="Save" IsNewNode="True" />
     </Rules>
   </Validation>
   <Views>
@@ -169,45 +166,46 @@
       </Items>
       <Layout>
         <LayoutGroup Id="Main" RelativeSize="100">
-          <LayoutGroup Id="SimpleEditors" RelativeSize="57.862903225806448">
-            <LayoutGroup Id="Person" RelativeSize="50.871080139372822" Index="0" Caption="Details" ShowCaption="True">
-              <LayoutGroup Id="Person_col1" RelativeSize="85" Direction="Horizontal" Caption="Person_col1">
-                <LayoutGroup Id="Person_col1a" ShowCaption="False" Index="0" RelativeSize="45" IsNewNode="True">
-                  <LayoutItem Id="FirstName" ViewItem="FirstName" Index="0" RelativeSize="28.571428571428573" IsNewNode="True" />
-                  <LayoutItem Id="MiddleName" ViewItem="MiddleName" Index="1" RelativeSize="21.428571428571427" IsNewNode="True" />
-                  <LayoutItem Id="LastName" ViewItem="LastName" Index="2" RelativeSize="21.428571428571427" IsNewNode="True" />
-                  <LayoutItem Id="FullName" ViewItem="FullName" Index="3" RelativeSize="21.428571428571427" IsNewNode="True" />
+          <LayoutGroup Id="SimpleEditors" RelativeSize="56.59163987138264">
+            <LayoutGroup Id="Person" RelativeSize="46.590909090909093" Index="0" Caption="Details" ShowCaption="True">
+              <LayoutGroup Id="Person_col1" RelativeSize="70" Direction="Horizontal" Caption="Person_col1">
+                <LayoutGroup Id="Person_col1a" ShowCaption="False" Index="0" RelativeSize="44.8051948051948" IsNewNode="True">
+                  <LayoutItem Id="FirstName" ViewItem="FirstName" Index="0" RelativeSize="29.032258064516128" IsNewNode="True" />
+                  <LayoutItem Id="MiddleName" ViewItem="MiddleName" Index="1" RelativeSize="20.967741935483872" IsNewNode="True" />
+                  <LayoutItem Id="LastName" ViewItem="LastName" Index="2" RelativeSize="20.967741935483872" IsNewNode="True" />
+                  <LayoutItem Id="FullName" ViewItem="FullName" Index="3" RelativeSize="29.032258064516128" IsNewNode="True" />
                 </LayoutGroup>
-                <LayoutGroup Id="Person_col1b" ShowCaption="False" Index="1" RelativeSize="55" IsNewNode="True">
-                  <LayoutItem Id="TitleOfCourtesy" ViewItem="TitleOfCourtesy" Index="0" RelativeSize="28.571428571428573" IsNewNode="True" />
-                  <LayoutItem Id="Email" ViewItem="Email" Index="1" RelativeSize="21.428571428571427" IsNewNode="True" />
-                  <LayoutItem Id="Birthday" ViewItem="Birthday" Index="2" RelativeSize="21.428571428571427" IsNewNode="True" />
-                  <LayoutItem Id="Address1" ViewItem="Address1" Index="3" RelativeSize="28.571428571428573" IsNewNode="True" />
+                <LayoutGroup Id="Person_col1b" ShowCaption="False" Index="1" RelativeSize="55.1948051948052" IsNewNode="True">
+                  <LayoutItem Id="TitleOfCourtesy" ViewItem="TitleOfCourtesy" Index="0" RelativeSize="29.032258064516128" IsNewNode="True" />
+                  <LayoutItem Id="Email" ViewItem="Email" Index="1" RelativeSize="20.967741935483872" IsNewNode="True" />
+                  <LayoutItem Id="Birthday" ViewItem="Birthday" Index="2" RelativeSize="20.967741935483872" IsNewNode="True" />
+                  <LayoutItem Id="Address1" ViewItem="Address1" Index="3" RelativeSize="29.032258064516128" IsNewNode="True" />
                 </LayoutGroup>
                 <LayoutItem Id="FirstName" Removed="True" />
                 <LayoutItem Id="LastName" Removed="True" />
                 <LayoutItem Id="MiddleName" Removed="True" />
               </LayoutGroup>
-              <LayoutGroup Id="Person_col2" RelativeSize="15" Caption="Person_col2">
+              <LayoutGroup Id="Person_col2" RelativeSize="30" Caption="Person_col2">
                 <LayoutItem Id="Photo" Index="0" RelativeSize="100" ViewItem="Photo" IsNewNode="True" />
                 <LayoutItem Id="Birthday" Removed="True" />
                 <LayoutItem Id="Email" Removed="True" />
                 <LayoutItem Id="FullName" Removed="True" />
               </LayoutGroup>
             </LayoutGroup>
-            <LayoutGroup Id="Contact" RelativeSize="49.128919860627178" Index="1" Caption="Additional Information" Direction="Vertical">
+            <LayoutItem Id="DokumentPdf" ViewItem="DokumentPdf" Index="1" RelativeSize="7.3863636363636367" IsNewNode="True" />
+            <LayoutGroup Id="Contact" RelativeSize="46.022727272727273" Index="2" Caption="Additional Information" Direction="Vertical">
               <LayoutGroup Id="Contact_col1" RelativeSize="100" Caption="Contact_col1" Direction="Horizontal">
-                <LayoutGroup Id="Contact_col1b" ShowCaption="False" Caption="" Index="0" RelativeSize="38.25" IsNewNode="True">
-                  <LayoutItem Id="NickName" ViewItem="NickName" Index="0" RelativeSize="28.571428571428573" IsNewNode="True" />
-                  <LayoutItem Id="SpouseName" ViewItem="SpouseName" Index="1" RelativeSize="21.428571428571427" IsNewNode="True" />
-                  <LayoutItem Id="Anniversary" ViewItem="Anniversary" Index="2" RelativeSize="21.428571428571427" IsNewNode="True" />
-                  <LayoutItem Id="WebPageAddress" ViewItem="WebPageAddress" Index="3" RelativeSize="28.571428571428573" IsNewNode="True" />
+                <LayoutGroup Id="Contact_col1b" ShowCaption="False" Caption="Contact_col1b(19)" Index="0" RelativeSize="38.18181818181818" IsNewNode="True">
+                  <LayoutItem Id="NickName" ViewItem="NickName" Index="0" RelativeSize="29.032258064516128" IsNewNode="True" />
+                  <LayoutItem Id="SpouseName" ViewItem="SpouseName" Index="1" RelativeSize="20.967741935483872" IsNewNode="True" />
+                  <LayoutItem Id="Anniversary" ViewItem="Anniversary" Index="2" RelativeSize="20.967741935483872" IsNewNode="True" />
+                  <LayoutItem Id="WebPageAddress" ViewItem="WebPageAddress" Index="3" RelativeSize="29.032258064516128" IsNewNode="True" />
                 </LayoutGroup>
-                <LayoutGroup Id="Contact_col1a" ShowCaption="False" Caption="" Index="1" RelativeSize="61.75" IsNewNode="True">
-                  <LayoutItem Id="Department" ViewItem="Department" Index="0" RelativeSize="28.571428571428573" IsNewNode="True" />
-                  <LayoutItem Id="Department.Office" ViewItem="Department.Office" Index="1" RelativeSize="21.428571428571427" IsNewNode="True" />
-                  <LayoutItem Id="Position" ViewItem="Position" Index="2" RelativeSize="21.428571428571427" IsNewNode="True" />
-                  <LayoutItem Id="Manager" ViewItem="Manager" Index="3" RelativeSize="28.571428571428573" IsNewNode="True" />
+                <LayoutGroup Id="Contact_col1a" ShowCaption="False" Caption="Contact_col1a(24)" Index="1" RelativeSize="61.81818181818182" IsNewNode="True">
+                  <LayoutItem Id="Department" ViewItem="Department" Index="0" RelativeSize="29.032258064516128" IsNewNode="True" />
+                  <LayoutItem Id="Department.Office" ViewItem="Department.Office" Index="1" RelativeSize="20.967741935483872" IsNewNode="True" />
+                  <LayoutItem Id="Position" ViewItem="Position" Index="2" RelativeSize="20.967741935483872" IsNewNode="True" />
+                  <LayoutItem Id="Manager" ViewItem="Manager" Index="3" RelativeSize="29.032258064516128" IsNewNode="True" />
                 </LayoutGroup>
                 <LayoutItem Id="Manager" Removed="True" />
                 <LayoutItem Id="NickName" Removed="True" />
@@ -219,10 +217,10 @@
             </LayoutGroup>
             <LayoutGroup Id="Party" Removed="True" />
           </LayoutGroup>
-          <LayoutGroup Id="SizeableEditors" RelativeSize="17.54032258064516" ShowCaption="True">
+          <LayoutGroup Id="SizeableEditors" RelativeSize="19.614147909967844" ShowCaption="True">
             <LayoutItem Id="Notes" RelativeSize="100" ShowCaption="False" />
           </LayoutGroup>
-          <TabbedGroup Id="Tabs" RelativeSize="24.596774193548388">
+          <TabbedGroup Id="Tabs" RelativeSize="23.794212218649516">
             <LayoutGroup Id="Tasks" Direction="Vertical" RelativeSize="100" Index="0">
               <LayoutItem Id="Tasks" RelativeSize="100" ViewItem="Tasks" />
             </LayoutGroup>
@@ -254,9 +252,9 @@
       </Columns>
       <Filters CurrentFilterId="AllContacts" IsNewNode="True">
         <Filter Id="AllContacts" Caption="All Contacts" IsNewNode="True" />
+        <Filter Id="Developers" Criteria="Position.Title = 'Developer'" IsNewNode="True" />
         <Filter Id="Managers" Criteria="Contains([Position.Title], 'Manager')" IsNewNode="True" />
         <Filter Id="TopExecutives" Caption="Top Executives" Criteria="Contains([Position.Title], 'President') Or Contains([Position.Title], 'Director') Or StartsWith([Position.Title], 'Chief') And EndsWith([Position.Title], 'Officer')" IsNewNode="True" />
-        <Filter Id="Developers" Criteria="Position.Title = 'Developer'" IsNewNode="True" />
       </Filters>
     </ListView>
     <ListView Id="Contact_ListView_AllColumns" Caption="Contacts" ClassName="MainDemo.Module.BusinessObjects.Contact" IsGroupPanelVisible="False" IsFooterVisible="True" AllowEdit="False" IsNewNode="True">
@@ -394,11 +392,11 @@
         <LayoutGroup Id="Main">
           <LayoutGroup Id="SimpleEditors">
             <LayoutGroup Id="Department" ShowCaption="False" Direction="Vertical">
-              <LayoutItem Id="Title" ViewItem="Title" Index="0" IsNewNode="True" />
+              <LayoutItem Id="Title" Index="0" ViewItem="Title" IsNewNode="True" />
               <LayoutItem Id="Location" Index="1" IsNewNode="True" />
-              <LayoutItem Id="Office" ViewItem="Office" Index="2" IsNewNode="True" />
+              <LayoutItem Id="Office" Index="2" ViewItem="Office" IsNewNode="True" />
               <LayoutItem Id="NumberOfEmployees" ViewItem="NumberOfEmployees" Index="3" IsNewNode="True" />
-              <LayoutItem Id="DepartmentHead" ViewItem="DepartmentHead" Index="4" IsNewNode="True" />
+              <LayoutItem Id="DepartmentHead" Index="4" ViewItem="DepartmentHead" IsNewNode="True" />
             </LayoutGroup>
           </LayoutGroup>
           <LayoutGroup Id="SizeableEditors" Caption="Description" ShowCaption="False">
@@ -484,7 +482,7 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
-    <ListView Id="Paycheck_ListView" IsGroupPanelVisible="True" Caption="Payroll" ShowAutoFilterRow="true">
+    <ListView Id="Paycheck_ListView" IsGroupPanelVisible="True" Caption="Payroll" ShowAutoFilterRow="True">
       <Columns>
         <ColumnInfo Id="Employee" SortOrder="Ascending" />
         <ColumnInfo Id="PayPeriod" SortOrder="Ascending" GroupIndex="0" />

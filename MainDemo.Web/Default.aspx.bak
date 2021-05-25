@@ -1,9 +1,9 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" Inherits="Default" EnableViewState="false"
     ValidateRequest="false" CodeBehind="Default.aspx.cs" %>
 
-<%@ Register Assembly="DevExpress.ExpressApp.Web.v20.2, Version=20.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+<%@ Register Assembly="DevExpress.ExpressApp.Web.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.ExpressApp.Web.Templates" TagPrefix="cc3" %>
-<%@ Register Assembly="DevExpress.ExpressApp.Web.v20.2, Version=20.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+<%@ Register Assembly="DevExpress.ExpressApp.Web.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
     Namespace="DevExpress.ExpressApp.Web.Controls" TagPrefix="cc4" %>
 <!DOCTYPE html>
 <html>
@@ -12,7 +12,7 @@
     <meta http-equiv="Expires" content="0" />
     <style>
         .custom-image {
-            background-image: url("/images/Pencil.svg");
+            background-image: url("/Images/Pencil.svg");
             background-repeat: no-repeat;
         }
 
@@ -37,7 +37,22 @@
                 color: #4a4a4a;
             }
     </style>
-
+    <script>
+        window.onCustomizeMenuActions = (s, e) => {
+            e.Actions.push({
+                text: 'Email',
+                imageClassName: 'custom-image',
+                disabled: ko.observable(false),
+                visible: true,
+                hasSeparator: true,
+                clickAction: function (report) {
+                    s.PerformCustomDocumentOperation();
+                },
+                hotKey: { ctrlKey: true, keyCode: 'Z'.charCodeAt(0) },
+                container: 'toolbar'
+            })
+        }
+    </script>
 </head>
 <body class="VerticalTemplate">
     <form id="form2" runat="server">
